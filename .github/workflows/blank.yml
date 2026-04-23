@@ -1,4 +1,35 @@
-curl --location 'https://app.v3.fireflink.com/dashboardexecution/optimize/v3/public/cicd/default-machine' \
---header "Content-Type: application/json" \
---header "version: phase_1" \
---data-raw "{  \"suiteId\" : \"SUITE_d43b62fd-d1b1-437d-9bfe-0b41e148dfb7\",  \"waitConfig\" : {    \"captureScreenshots\" : \"failedSteps\",    \"captureVideos\" : \"notCapture\",    \"delayBetweenSteps\" : \"2\",    \"delayBetweenStepsUnit\" : \"Seconds\",    \"explicitWait\" : \"20\",    \"explicitWaitUnit\" : \"Seconds\",    \"implicitWait\" : \"20\",    \"implicitWaitUnit\" : \"Seconds\",    \"terminateScriptIfTakesMoreTime\" : \"6\",    \"terminateScriptUnit\" : \"Minutes\",    \"terminateSuiteIfTakesMoreTime\" : \"1\",    \"terminateSuiteUnit\" : \"Hours\"  },  \"licenseId\" : \"LIC26219\",  \"accessToken\" : \"eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJNTnNvS1VYQkxLS3BPblpWUUxaZWhwcGhobHdJSldCYUF4dDRkaXMwNlcwIn0.eyJleHAiOjE3NzcwMjI3OTEsImlhdCI6MTc3NjkzNjM5MSwianRpIjoib25ydG5hOjRjZDg2YWRiLWU2Y2YtNGUxZi05ZGQzLWFlZTBkMDdmNTcyYyIsImlzcyI6Imh0dHBzOi8vYXBwLnYzLmZpcmVmbGluay5jb206MzAxMDEvcmVhbG1zL0ZpcmVGbGluayIsInN1YiI6ImY6ODg5MjliMDAtNzNiOC00NzRmLWJiYmMtZGIyZTFhM2UwNzk4OnRlamFzaHdpbmlAZmlyZWZsaW5rLmNvbSIsInR5cCI6IkJlYXJlciIsImF6cCI6InRhcmdldC1jbGllbnQiLCJzaWQiOiI3ODM3MDI1NS02OTE3LTRjNmYtODdhMS1jZjU2NjBlZjlhZjgiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpbIioiXSwicmVhbG1fYWNjZXNzIjp7InJvbGVzIjpbIm9mZmxpbmVfYWNjZXNzIiwidW1hX2F1dGhvcml6YXRpb24iXX0sInNjb3BlIjoicHJvZmlsZSBlbWFpbCIsImN1cnJlbnRMaWNlbnNlSWQiOiJMSUMyNjIxOSIsImVtYWlsX3ZlcmlmaWVkIjpmYWxzZSwiY3VycmVudFByaXZpbGVnZSI6IkFkbWluIiwiZnVsbE5hbWUiOiJUZWphc2h3aW5pIiwiYWN0aXZhdGlvblN0YXR1cyI6IkFDVElWRSIsInByaXZpbGVnZSI6IkFkbWluIiwibGljZW5zZU5hbWUiOiJmaXJlLWZsaW5rLUxJQzI2MjE5IiwicHJlZmVycmVkX3VzZXJuYW1lIjoiVGVqYXNod2luaSIsInVzZXJOYW1lIjoidGVqYXNod2luaUBmaXJlZmxpbmsuY29tIiwiYmlsbGluZ0N5Y2xlIjoiSGFsZlllYXJseSIsImlkIjoiVVNSMTAxNDkwMzQiLCJsaWNlbnNlSWQiOiJMSUMyNjIxOSIsImVtYWlsIjoidGVqYXNod2luaUBmaXJlZmxpbmsuY29tIn0.czTTLsCUIJGqJWNn4_hSyBIv_kI8wMB_G8UlIuDILtJRYuv4eAOzFxsoxXMUMmt-ZbCrkPsa71wJp-1raBQYGoGEyllCzI8Is-lipQKJFtxZggOLOyhKxaG-bJxhCIORrgz-vBoNNNY4eHK9-909QGGWi_rzwD92ZOvscuo0QDofGUgaelCIIg9LU9y6BUuRdWv6ZOcwm3mDrrjpj9vlimeDTXo-0M8PC_r88vaKi9SbmO4XGk5QZ2dPC53JfDJBYig2pEZvK5MUjTfbjITo66bxQO5kryZ-qlrrqOzT5u482zcaqgUR16JJgIykOJnH-vaik4R83S8VASc0YdmbKg\",  \"projectId\" : \"PJT1485\"}"
+name: Fireflink Trigger
+
+on:
+  workflow_dispatch:
+
+jobs:
+  run-curl:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Execute Fireflink API
+        run: |
+          curl --location 'https://app.v3.fireflink.com/dashboardexecution/optimize/v3/public/cicd/default-machine' \
+          --header "Content-Type: application/json" \
+          --header "version: phase_1" \
+          --data-raw '{
+            "suiteId": "SUITE_d43b62fd-d1b1-437d-9bfe-0b41e148dfb7",
+            "waitConfig": {
+              "captureScreenshots": "failedSteps",
+              "captureVideos": "notCapture",
+              "delayBetweenSteps": "2",
+              "delayBetweenStepsUnit": "Seconds",
+              "explicitWait": "20",
+              "explicitWaitUnit": "Seconds",
+              "implicitWait": "20",
+              "implicitWaitUnit": "Seconds",
+              "terminateScriptIfTakesMoreTime": "6",
+              "terminateScriptUnit": "Minutes",
+              "terminateSuiteIfTakesMoreTime": "1",
+              "terminateSuiteUnit": "Hours"
+            },
+            "licenseId": "LIC26219",
+            "accessToken": "eyJhbGciOiJSUzI1NiIsInR5cCIgOiAiSldUIiwia2lkIiA6ICJNTnNvS1VYQkxLS3BPblpWUUxaZWhwcGhobHdJSldCYUF4dDRkaXMwNlcwIn0.eyJleHAiOjE3NzcwMjkyODMsImlhdCI6MTc3Njk0Mjg4MywianRpIjoib25ydG5hOjViNTMzYWI5LWNkYjAtNDM1ZS04ODVlLWQ3Mjg0NGMzMTZlMSIsImlzcyI6Imh0dHBzOi8vYXBwLnYzLmZpcmVmbGluay5jb206MzAxMDEvcmVhbG1zL0ZpcmVGbGluayIsInN1YiI6ImY6ODg5MjliMDAtNzNiOC00NzRmLWJiYmMtZGIyZTFhM2UwNzk4OnRlamFzaHdpbmlAZmlyZWZsaW5rLmNvbSIsInR5cCI6IkJlYXJlciIsImF6cCI6InRhcmdldC1jbGllbnQiLCJzaWQiOiI3ODM3MDI1NS02OTE3LTRjNmYtODdhMS1jZjU2NjBlZjlhZjgiLCJhY3IiOiIxIiwiYWxsb3dlZC1vcmlnaW5zIjpb["*"],"realm_access":{"roles":["offline_access","uma_authorization"]},"scope":"profile email","currentLicenseId":"LIC26219","email_verified":false,"currentPrivilege":"Admin","fullName":"Tejashwini","activationStatus":"ACTIVE","privilege":"Admin","licenseName":"fire-flink-LIC26219","preferred_username":"Tejashwini","userName":"tejashwini@fireflink.com","billingCycle":"HalfYearly","id":"USR10149034","licenseId":"LIC26219","email":"tejashwini@fireflink.com"}.kt-hkNk9kEugcBMV22rc_s_lZwnjK-ClQyuhGVlwJ2uVIpi4qqp4txRq2LFkafwOibqkSsRMJiz4ltPwsr5CyvrqWUNhlplNybQzHtylQnvfHrIwmiaUkcTXEek4cWr1u8YfiuqT524m-kSR9hSlw1V4SkA0iGxcAigIhXdbKfZGThb6Aetgr4RP9yhvg2tTock8SRwwol-mzNJQgeuH9PLiR-AVcuP2P1_wxEWYdj-sB5hwF5edIiSUxysA5JaaiEAUOVY0xRW9VmFJd0q94I2Fel9sUYZK9u0LKLHCN-JmLtKcYc2aBJHUEYDB8COfs2vfJ0qRt1oGMQGLhaooBQ",
+            "projectId": "PJT1485"
+          }'
